@@ -1,0 +1,49 @@
+{
+    "name": "agung/event-integration",
+    "description": "A Laravel package for registering integration events and planning filtered, formatted deliveries.",
+    "keywords": [
+        "laravel",
+        "events",
+        "integration",
+        "webhook",
+        "rabbitmq"
+    ],
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Agung Nugraha",
+            "email": "nugraha.an96@gmail.com"
+        }
+    ],
+    "require": {
+        "php": "^8.3",
+        "ext-json": "*",
+        "illuminate/contracts": "^12.0 || ^13.0",
+        "illuminate/database": "^12.0 || ^13.0",
+        "illuminate/http": "^12.0 || ^13.0",
+        "illuminate/support": "^12.0 || ^13.0",
+        "php-amqplib/php-amqplib": "^3.7"
+    },
+    "require-dev": {
+        "laravel/pint": "^1.27",
+        "pestphp/pest": "^4.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Agung\\EventIntegration\\": "src/"
+        }
+    },
+    "scripts": {
+        "test": "pest --configuration phpunit.xml.dist",
+        "format": "pint",
+        "format:check": "pint --test"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Agung\\EventIntegration\\EventIntegrationServiceProvider"
+            ]
+        }
+    }
+}
