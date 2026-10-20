@@ -2,6 +2,7 @@
 
 declare(strict_types=1);
 
+use Agung\EventIntegration\Contracts\RabbitMqConnectionResolver;
 use Agung\EventIntegration\Contracts\TransportPublisher;
 use Agung\EventIntegration\Contracts\WebhookUrlValidator;
 use Agung\EventIntegration\Exceptions\InvalidIntegrationDefinition;
@@ -199,7 +200,7 @@ it('resolves RabbitMQ connection settings from a channel destination', function 
 });
 
 it('rejects RabbitMQ channels without an exchange or queue', function (): void {
-    $resolver = new class implements \Agung\EventIntegration\Contracts\RabbitMqConnectionResolver
+    $resolver = new class implements RabbitMqConnectionResolver
     {
         public function resolve(IntegrationChannel $channel): array
         {
@@ -347,7 +348,7 @@ it('claims an activity atomically and skips a concurrent publish attempt', funct
     {
         public int $attempts = 0;
 
-        public ?\Closure $publishDuringDelivery = null;
+        public ?Closure $publishDuringDelivery = null;
 
         public function transport(): string
         {

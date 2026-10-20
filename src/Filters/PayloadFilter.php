@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Agung\EventIntegration\Filters;
 
+use Agung\EventIntegration\Contracts\FilterOperator;
 use Agung\EventIntegration\Events\IntegrationEvent;
 use Agung\EventIntegration\Exceptions\InvalidFilterRule;
 use Agung\EventIntegration\Fields\FieldDefinition;
@@ -136,7 +137,7 @@ final class PayloadFilter
      * Filters a declared collection, traversing parent objects and arrays when nested.
      *
      * @param  list<string>  $segments  Remaining path segments leading to the collection.
-     * @param  list<array{field: string, operator: \Agung\EventIntegration\Contracts\FilterOperator,
+     * @param  list<array{field: string, operator: FilterOperator,
      *     value: mixed}>  $rules  Rules applied to each item in the target collection.
      */
     private function filterCollectionAtPath(
